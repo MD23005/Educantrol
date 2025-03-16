@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  java_app2:
+    container_name: java_app2
+    image: app-educantrol:1.0
+    build: .
+    ports:
+      - 8081:8080
+    depends_on:
+      - java_db2
+  java_db2:
+    container_name: java_db2
+    image: mariadb:10.5
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=Educantrol
+      - MYSQL_USER=luis
+      - MYSQL_PASSWORD=master
+    
